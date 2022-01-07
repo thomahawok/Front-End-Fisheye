@@ -47,6 +47,11 @@ h1 {
     flex-direction: column;
     text-decoration: none;
     color: black;
+    padding: 0.5rem;
+}
+
+.photographer_section a:hover {
+    background-color: rgba(128, 128, 128, 0.439);
 }
 
 .photographer_section article h2 {
@@ -60,11 +65,12 @@ h1 {
 }
 
 .photographer_section article a :nth-child(3n) {
-    color: #D3573C;
+    color: #901C1C;
+    font-weight: bold;
 }
 
 .photographer_section article a :last-child {
-    color: #686565;
+    color: rgba(67, 67, 67, 0.885);;
 }
 
 .photographer_section article a img {
