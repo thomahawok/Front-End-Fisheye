@@ -10,7 +10,7 @@ class photographerCard {
         $wrapperPhotographer.setAttribute("id", this._photographer.id);
         
        const mediaCardImg = `
-                <a href = "photographer.html?${this._photographer.id} tabindex="10" aria-label="Aller sur la page de ${this._photographer.name} originaire de ${this._photographer.city} , ${this._photographer.country}">
+                <a href = "photographer.html?${this._photographer.id}" tabindex="10" aria-label="Aller sur la page de ${this._photographer.name} originaire de ${this._photographer.city} , ${this._photographer.country}">
                     <img 
                         src = "assets/photographers/${this._photographer.portrait}"
                         alt="${this._photographer.name} " portrait"
