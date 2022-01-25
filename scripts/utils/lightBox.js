@@ -136,12 +136,10 @@ class Lightbox {
 	next(e) {
 		e.preventDefault();
 		let i = this.arraySrc.findIndex((image) => image === this.src);
-		console.log(this.arraySrc)
-		console.log(i)
-		if (i === this.arraySrc.length - 1) {
+		if (i === this.arraySrc.length - 1) { 								/**** gestion du dernier média / ici arraySrc.length =10 donc denier média arraySrc[9] ****/
 			i = -1;
 		}
-		this.loadMedia(this.arraySrc[i + 1]);
+		this.loadMedia(this.arraySrc[i + 1]); 								/**** au dernier média i=-1 donc arraySrc[0] (-1+1) soit le premier média */
 	}
 
 	/**
@@ -150,11 +148,11 @@ class Lightbox {
 	 */
 	previous(e) {
 		e.preventDefault();
-		let i = this.arraySrc.findIndex((image) => image === this.src);
-		if (i === 0) {
+		let i = this.arraySrc.findIndex((image) => image === this.src); 
+		if (i === 0) {													/**** gestion du premier média [0]/ arraySrc.length =10 donc i=10 ****/
 			i = this.arraySrc.length;
 		}
-		this.loadMedia(this.arraySrc[i - 1]);
+		this.loadMedia(this.arraySrc[i - 1]);							/**** au premier média i=0 donc arraySrc[9] (10-1) soit le premier média */
 	}
 
 	/**

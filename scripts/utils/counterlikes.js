@@ -14,12 +14,16 @@ function LikeDontLike(mediasId) {
             let newCount = oldCount +1
             numberLikes.innerHTML = newCount
             let eTarget = event.target
+            console.log(eTarget)
             eTarget.className = "fa-x2 fas fa-heart"
+            eTarget.setAttribute("aria-label", "Ajouter un j'aime")
         } else {
             newCount = oldCount -1
             numberLikes.innerHTML = newCount
             let eTarget = event.target
+            console.log(eTarget)
             eTarget.className = "fa-x2 far fa-heart"
+            eTarget.setAttribute("aria-label", "Retirer le j'aime")
         }
           
         totalCuntLikes ()

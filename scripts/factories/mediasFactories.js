@@ -17,13 +17,14 @@ class mediaCard {
                         alt="${this._media.title}"
                         role="img"
                         class="imgMedia"
+                        tabindex="5"
                     />
                 </a>
                 <aside class="asideMedia">
                     <h2> ${this._media.title} </h2>
                     <div class = "likes">
                         <p class = "numberLikes"> ${this._media.likes}</p>
-                        <i class="fa-x2 far fa-heart" class="likes" id= ${this._media.id}></i>
+                        <i class="fa-x2 far fa-heart" class="likes" id= ${this._media.id} tabindex="5"></i>
                     </diV>
                 </aside>    
         `
@@ -41,6 +42,7 @@ class mediaCard {
                     <source
                     src = "/assets/Sample Photos/${this._media.photographerId}/${this._media.video}"
                     type="video/mp4"
+                    tabindex="5"
                     >
                </video>
             </a>
@@ -48,7 +50,7 @@ class mediaCard {
                 <h2> ${this._media.title} </h2>
                 <div class = "likes">
                     <p class = "numberLikes"> ${this._media.likes}</p>
-                    <i class="fa-x2 far fa-heart" class="likes" id= ${this._media.id}></i>
+                    <i class="fa-x2 far fa-heart" class="likes" id= ${this._media.id} tabindex="5"></i>
                 </diV>
             </aside>
         `
