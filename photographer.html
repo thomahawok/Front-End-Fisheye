@@ -1,55 +1,136 @@
-<!DOCTYPE html>
-<html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
   <head>
+    
+    <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="icon" type="image/png" href="assets/favicon.png"/>
     <script src="https://kit.fontawesome.com/be6a7f0441.js" crossorigin="anonymous"></script> 
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet"/>
+    <meta name="title" content="Fisheye - Photographe"/>
+    <meta name="description" content="FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux."/>
+    <title>Fisheye</title>
   </head>
+
   <body>
     <header>
       <img src="assets/images/logo.png" alt="logo de Fisheye - Page potographe" class="logo"/>
     </header>
+    
     <main id="main">
       <section class="photograph_header">
          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </section>
 
-      <section class="sourtMedia">
-         <div>
-          <p>Triez par</p>
+      <section class="classify">
+          <label for="dropDownMenu" >Triez par</label>
+          <select id="dropDownMenu" class = "dropDownMenu__menu" aria-label = "" tabindex="">
+            <option Value="" class="dropDownMenu__menu__item"></option>
+            <option Value="popularity" class="dropDownMenu__menu__item">Popularité</option>
+            <option Value="title" class="dropDownMenu__menu__item">Titre</option> 
+          </select>
         </div>
-      </section>
+      </section> 
 
       <section class="photograph_media">
       </section>
-      
     </main>
-    <div id="contact_modal">
-			<div class="modal">
+
+		<div id="contact_modal" class="modal">
+      <div class="content">
 				<header>
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
+
+        <div class="modal-body">
+          <form
+            id="form"
+            name="reserve"
+            action= "index.html"
+            method="get"
+            novalidate
+          >
+            <div
+              class="formData"
+              id = "formFirst"
+              data-error-visible="false"
+              data-valid="false" >
+              <label for="first">Prénom</label><br>
+              <input
+                class="text-control"
+                type="text"
+                id="first"
+                name="first"
+                pattern="[A-Za-z]{2,12}"
+                required
+              /><br>
+            </div>
+            <div
+              class = "formData"
+              id = "formLast"
+              data-error-visible="false"
+              data-valid="false" >
+              <label for="last">Nom</label><br>
+              <input
+                class="text-control"
+                type="text"
+                id="last"
+                name="last"
+                pattern="[A-Za-z]{2,8}"
+                required
+              /><br>
+            </div>
+            <div
+            class = "formData"
+            id = "formEmail"
+            data-error-visible = "false"
+            data-valid = "false" >
+              <label for="email">E-mail</label><br>
+              <input
+                class="text-control"
+                type="email"
+                id="email"
+                name="email"
+                required
+              /><br>
+            </div>
+            <div
+            class = "formData"
+            id = "formEmail"
+            data-error-visible = "false"
+            data-valid = "false" >
+              <label for="messageText">Votre messsage</label><br>
+              <input
+              class="text-control"
+                type="textarea"
+                id="messageText"
+                name="messageText"
+                rows="10"
+                required
+              ><br>
+            </div>
+            <button id="btsubmit" class="contact_button" type="submit">Envoyer</button>
+          </form>
+        </div>
 		</div>
-    <!-- <script src="scripts/utils/constructorPattern.js"></script> -->
+		<script src="scripts/api/apiData.js"></script>
+    
+
     <script src="scripts/pages/photographer.js"></script>
-    <script src="scripts/api/apiData.js"></script>
+    <script src="scripts/factories/photographerFactories.js"></script>
+    <script src="scripts/factories/mediasFactories.js"></script>
+    <script src="scripts/factories/constFooterFactories.js"></script>
+    
+    <!-- <script src="scripts/api/apiData.js"></script>
     <script src="scripts/api/apiDataMedias.js"></script>
-    <script src="scripts/factories/Photographer.js"></script>
-    <script src="scripts/factories/medias.js"></script>
+    <script src="scripts/factories/Photographer.js"></script>-->
+    
     <script src="/scripts/utils/contactForm.js"></script>
-    <script src="/scripts/utils/likes.js"></script>
+    <script src="/scripts/utils/counterlikes.js"></script>
+    <script src="/scripts/utils/sortBy.js"></script>
+    <script src="/scripts/utils/lightBox.js"></script>
   </body>
 </html>

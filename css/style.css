@@ -39,37 +39,46 @@ h1 {
     flex-direction: column;
 }
 */
-.photographer_section a {
+.photographer_section article a {
     
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-decoration: none;
-    color: black;
-    padding: 0.5rem;
+    padding-top: 0.5rem;
 }
 
-.photographer_section a:hover {
+.photographer_section article a aside {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    padding-bottom: 0.5rem;
+}
+
+.photographer_section article a:hover {
     background-color: rgba(128, 128, 128, 0.439);
 }
 
-.photographer_section article h2 {
+.photographer_section article a aside h2 {
     color: #D3573C;
     font-size: 1.7rem;
     margin-bottom: 0.7rem;
 }
 
-.photographer_section article a p {
+.photographer_section article a aside p {
     margin: 0.1rem;
 }
 
-.photographer_section article a :nth-child(3n) {
+.photographer_section article a aside :nth-child(2n) {
     color: #901C1C;
     font-weight: bold;
 }
 
-.photographer_section article a :last-child {
+.photographer_section article a aside :last-child {
     color: rgba(67, 67, 67, 0.885);;
 }
 

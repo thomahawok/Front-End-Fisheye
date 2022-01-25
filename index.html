@@ -11,20 +11,19 @@
     <meta name="description" content="FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux.">
     <title>Fisheye</title>
   </head>
+  
   <body>
     <header role="banner">
         <img src="assets/images/logo.png" alt="logo de Fisheye - Page d’accueil" class="logo" />
         <h1>Nos photographes</h1>
     </header>
+
     <main id="main" role="main">
-        <section class="photographer_section" aria-label="presentation des photographes""></div>
+        <section class="photographer_section" aria-label="presentation des photographes"></div>
     </main>
 
-    <!-- utils 
-    <script src="/js/utils/constructorPattern.js"></script>-->
-
-    <script src="scripts/factories/Photographer.js"></script>
+    <script src="scripts/api/apiData.js"></script>
+    <script src="scripts/factories/photographerFactories.js"></script>
     <script src="scripts/pages/index.js"></script>
-    <script src="scripts/pages/photographer.js"></script>
   </body>
 </html>

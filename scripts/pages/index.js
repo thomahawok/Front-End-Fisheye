@@ -1,29 +1,8 @@
+
+
 /*
- * Send an email via SMTP
- * @param { (String | Array) } to
- * @param { String } text
- * @param { String } subject
- * @return { Promise }
- */
-
-async function getPhotographers() {
-    // Penser à remplacer par les données récupérées dans le json
-  let photographers = [];
-
-  await fetch("./data/photographers.json")
-  .then((res) => res.json())
-  .then((data) => {
-    photographers = data.photographers;
-  });
-// et bien retourner le tableau photographers seulement une fois
-    console.log(photographers);
-    return ({
-        photographers: [...photographers]})       
-};
-   
-
 async function displayData(photographers) {
-    console.log(photographers);
+    //console.log(photographers);
     const photographersSection = document.querySelector(".photographer_section");
 
     photographers.forEach((photographer) => {
@@ -32,11 +11,25 @@ async function displayData(photographers) {
         photographersSection.appendChild(userCardDOM);
     });
 };
+*/
 
-async function init() {
-    // Récupère les datas des photographes
-    const { photographers } = await getPhotographers();
-    displayData(photographers);
-};
-    
-init();  
+
+
+async function displayData() {
+  mediasApiPhotographers = new mediasApi('./data/photographers.json')
+     
+        const photographersAll = await mediasApiPhotographers.getPhotographers()
+         
+         
+        const photographersSection = document.querySelector(".photographer_section");
+        photographersAll.forEach(photographer => {
+          const TemplatePhotographer = new photographerCard(photographer)
+          photographersSection.appendChild(TemplatePhotographer.createPhotographersCard())        
+        })
+}
+
+displayData()
+
+//const app = new appPhotographers()
+//app.mainPhotographers()
+
