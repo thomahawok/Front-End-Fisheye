@@ -1,75 +1,131 @@
-async function  getPhotographer() {
-  mediasApiPhotographers = new mediasApi('./data/photographers.json')
-  const photographersAll = await mediasApiPhotographers.getPhotographers()
-  const queryStingUrlId = window.location.search;
-  const idPhotographer = queryStingUrlId.slice(1);
-  const photographerId = photographersAll.find((element) => element.id == idPhotographer);
-  //console.log(photographerId)
-  return (photographerId)
-} 
+let $mediasWrapper = document.querySelector('.photograph_media')
+let $mediasFooter = document.querySelector('body')
 
-async function  displayDataPhotographer() {
-  const photographerId = await getPhotographer();
-  const photographersHeader = document.querySelector(".photograph_header");
-  const photographerModel =  new photographerCard(photographerId);
-  photographersHeader.appendChild(photographerModel.createPhotographersCard())
-} 
-
-displayDataPhotographer() 
-
-
-class appMedias {
-  constructor() {
-      this.$mediasFooter = document.querySelector('body')
-      this.mediasApi = new mediasApi('./data/photographers.json')
+class AppMedias {
+  constructor () {
+    this.mediasApi = new MediasApi ('./data/photographers.json')
   }
 
-  async main() {
-      /*-- création des médias --*/
-          /*-- medias = ensemble des medias du fichier JSON --*/
-          const medias = await this.mediasApi.getMedias()
-          /*-- idPhotographer = id du photographe de la barre d'addresse du navigateur --*/
-          const idPhotographer = window.location.search.slice(1);  
-          /*-- mediasId = ensemble des medias du photographe de la page --*/
-          const mediasId = medias.filter((element) => element.photographerId == idPhotographer)
+  async main () {
+    const photographersAll = await this.mediasApi.getPhotographers()/* photographersAll = tableau de l'ensemble des photographes du fichier JSON */
+    const medias = await this.mediasApi.getMedias() /* medias = tableau de l'ensemble des medias du fichier JSON */
+    const queryStingUrlId = window.location.search /* récupére ?id de la barre d'addresse */
+    const idPhotographer = queryStingUrlId.slice(1) /* supprime ? donc récupére uniquement id */
+    const photographerId = photographersAll.find((element) => element.id == idPhotographer) /* array des données du photographe DE LA PAGE en cous */
+    const mediasId = medias.filter((element) => element.photographerId == idPhotographer)/* array des medias du photographe  DE LA PAGE en cous */
 
-          updateGallery(mediasId)
+    displayDataPhotographer(photographerId)
+    updateGallery(mediasId)
+    displayFooterLikes(photographerId)
+    likeDontLike(mediasId)
+    initLightbox()
+    /* création HTML du trie par popularité et titre */
+    const dropDownMenu = document.querySelector('#dropDownMenu')
+    dropDownMenu.addEventListener('change', function (event) {
+      $mediasWrapper.innerHTML = ''
+      const getOption = event.target.value
+      const option = sortByOption(mediasId, getOption)
+      updateGallery(option)
 
-          /*-- Incrémente / décrémente le nombre de likes --*/
-          LikeDontLike(mediasId) 
-
-      /*-- création du footer likes et prix --*/
-          /*-- photographer = ensemble des photographes du fichier JSON --*/  
-          const photographers = await this.mediasApi.getPhotographers()
-          /*-- Photographer = données du photographe --*/
-          const photographer = photographers.find((element) => element.id == idPhotographer);
-          const FooterLikesPice = new constFooter(photographer)
-          this.$mediasFooter.appendChild(FooterLikesPice.createCounterFooter())
-          /*-- calcul le nombre total de likes --*/
-          totalCuntLikes()
-
-      /*-- création du trie par popularité et titre --*/
-      const dropDownMenu = document.querySelector("#dropDownMenu")
-      dropDownMenu.addEventListener("change", function (event) {
-              $mediasWrapper.innerHTML = "";
-              const getOption = event.target.value 
-              const option = sortByOption(mediasId, getOption);
-              updateGallery(option)
-             Lightbox.init()
-          });
-          Lightbox.init()
+      initLightbox()
+    })
   }
 }
 
-const app = new appMedias()
+const app = new AppMedias()
 app.main()
 
-/*-- création de la gallerie de medias--*/
-function updateGallery (gallery){
-  $mediasWrapper = document.querySelector('.photograph_media')
+/**
+ * Display information's photographer - affiche les infomrations du photographe
+ * @param {Array} photographerId
+ */
+function displayDataPhotographer (photographerId) {
+  const photographersHeader = document.querySelector('.photograph_header')
+  const photographerModel = new PhotographerCard(photographerId)
+  photographersHeader.appendChild(photographerModel.createPhotographersCard())
+}
+
+/**
+ * Display information's footer- affiche les infomrations du footer
+ * @param {Array} photographerId
+ */
+function displayFooterLikes (photographerId) {
+  const photographerBody = document.querySelector('body')
+  const footerModel = new PhotographerCard(photographerId)
+  photographerBody.appendChild(footerModel.createCounterFooter())
+  totalCuntLikes()
+}
+
+/**
+ * Update media gallery - création de la gallerie de medias
+ * @param {Array} gallery
+ */
+function updateGallery (gallery) {
   gallery.forEach(media => {
-      const Template = new mediaCard(media)
-      $mediasWrapper.appendChild(Template.createMediaCard())        
+    const Template = new MediaCard(media)
+    $mediasWrapper.appendChild(Template.createMediaCard())
+    
   })
 }
 
+/**
+ * Increment and decrement number of likes - Incrémentation / décrémentation des likes
+ * @param {Array} mediasId
+ */
+function likeDontLike (mediasId) {
+  document.addEventListener('click', (e) => {
+    if (!isNaN(e.target.id) && (!!e.target.id)) { /* si le target contien un ID et contien quequechose */
+      const oldCount = Number(e.target.parentElement.previousElementSibling.textContent) /* récupère le nombre de likes correspodant au coeur clické */
+      const indexData = mediasId.findIndex(element => element.id == e.target.id) /* récupère le nombre de likes correspodant au coeur clické */
+      const numberLikes = e.target.parentElement.previousElementSibling
+      if (oldCount === mediasId[indexData].likes) {
+        const newCount = oldCount + 1
+        numberLikes.innerHTML = newCount
+        const eTarget = e.target
+        eTarget.className = 'fa-2x fas fa-heart'
+        eTarget.parentElement.setAttribute('aria-label', "Ajouter un j'aime")
+      } else {
+        const newCount = oldCount - 1
+        numberLikes.innerHTML = newCount
+        const eTarget = e.target
+        eTarget.className = 'fa-2x far fa-heart'
+        eTarget.parentElement.setAttribute('aria-label', "Retirer le j'aime")
+      }
+      totalCuntLikes()
+    } else {
+      return false
+    }
+  })
+}
+
+/**
+* Like counter function - Fonction compteur de like
+*/
+function totalCuntLikes () {
+  const arrayLikes = document.querySelectorAll('p.numberLikes')
+  let totalLikes = 0
+
+  for (let i = 0; i < arrayLikes.length; i++) {
+    totalLikes += Number(arrayLikes[i].innerHTML)
+  }
+  const totalLikesP = document.querySelector('p.photographerFooter_aside_totalLikes')
+  totalLikesP.innerHTML = totalLikes
+}
+
+/**
+* Function pulls media - Fonction tire des médias
+*/
+function sortByOption (mediasId, getOption) {
+  switch (getOption) {
+    case 'popularity':
+      return mediasId.sort((a, b) => {
+        return b.likes - a.likes
+      })
+    case 'title':
+      return mediasId.sort((a, b) => a.title.localeCompare(b.title))
+    default:
+      return mediasId.sort((a, b) => {
+        return b.likes - a.likes
+      })
+  }
+}

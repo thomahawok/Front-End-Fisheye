@@ -1,62 +1,65 @@
-class mediaCard {
-    constructor(media) {
-        this._media = media
-    }
-    
+class MediaCard {
+  constructor (media) {
+    this._media = media
+  }
 
-    createMediaCard() {
-        const $wrapper = document.createElement("article")
-        $wrapper.classList.add("cadrMedia")
-        
-        
-        if (this._media.image) {
-            const mediaCardImg = `
-                <a href = "" class="Media">
+  createMediaCard () {
+    const $wrapper = document.createElement('article')
+    $wrapper.classList.add('cadrMedia')
+
+    if (this._media.image) {
+      const mediaCardImg = `
+              <figure class='Media'>
+                  <a href = '/assets/Sample Photos/${this._media.photographerId}/${this._media.image}'>
                     <img 
-                        src = "/assets/thumbnails/${this._media.photographerId}/${this._media.image}"
-                        alt="${this._media.title}"
-                        role="img"
-                        class="imgMedia"
-                        tabindex="5"
+                        src = '/assets/thumbnails/${this._media.photographerId}/${this._media.image}'
+                        alt="${this._media.description}"
+                        role='img'
+                        class='imgMedia'
+                        tabindex='5'
                     />
-                </a>
-                <aside class="asideMedia">
-                    <h2> ${this._media.title} </h2>
-                    <div class = "likes">
-                        <p class = "numberLikes"> ${this._media.likes}</p>
-                        <i class="fa-x2 far fa-heart" class="likes" id= ${this._media.id} tabindex="5"></i>
-                    </diV>
-                </aside>    
+                  </a>
+                <footer class='footerMedia'>
+                    <figuration class='figuration'> ${this._media.title} </figuration>
+                    <div class='contenerLikes'>
+                      <p class = 'numberLikes'> ${this._media.likes}</p>
+                      <button class = 'likes' tabindex='5'>
+                          <i class='fa-2x far fa-heart' class='likes' id= ${this._media.id} ></i>
+                      </button>
+                    </div>
+                </footer>
+                </figure>      
         `
-        $wrapper.innerHTML = mediaCardImg
-        return $wrapper
-        } else {
+      $wrapper.innerHTML = mediaCardImg
+      return $wrapper
+    } else {
+      let poster = this._media.video
+      poster = poster.split('.')
+      poster = poster[0] + '.jpg'
 
-            let poster = this._media.video
-            poster = poster.split(".")
-            poster = poster[0]+".jpg"
-
-            const mediaCardVideo = `
-            <a href = "" class="Media">
-                <video class="imgMedia" role="video" controls poster="/assets/Sample Photos/${this._media.photographerId}/${poster}">
+      const mediaCardVideo = `
+          <figure class='Media'>
+            <a href = '/assets/Sample Photos/${this._media.photographerId}/${this._media.video}'>
+                <video class='imgMedia' role='video'  poster='/assets/Sample Photos/${this._media.photographerId}/${poster}' tabindex='5'>
                     <source
-                    src = "/assets/Sample Photos/${this._media.photographerId}/${this._media.video}"
-                    type="video/mp4"
-                    tabindex="5"
+                    src = '/assets/Sample Photos/${this._media.photographerId}/${this._media.video}'
+                    type='video/mp4'
                     >
                </video>
             </a>
-            <aside class="asideMedia">
-                <h2> ${this._media.title} </h2>
-                <div class = "likes">
-                    <p class = "numberLikes"> ${this._media.likes}</p>
-                    <i class="fa-x2 far fa-heart" class="likes" id= ${this._media.id} tabindex="5"></i>
-                </diV>
-            </aside>
+            <footer class='footerMedia'>
+                <figuration  class='figuration'> ${this._media.title} </figuration>
+                <div class='contenerLikes'>
+                  <p class = 'numberLikes'> ${this._media.likes}</p>
+                  <button class = 'likes' tabindex='5'>
+                    <i class='fa-2x far fa-heart' class='likes' id= ${this._media.id} ></i>
+                  </button>
+                </div> 
+            </footer>
+          </figure>
         `
-        $wrapper.innerHTML = mediaCardVideo
-        return $wrapper
-        }
+      $wrapper.innerHTML = mediaCardVideo
+      return $wrapper
     }
+  }
 }
-

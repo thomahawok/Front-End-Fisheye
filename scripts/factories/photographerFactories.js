@@ -1,34 +1,54 @@
+class PhotographerCard {
+  constructor (photographer) {
+    this._id = photographer.id
+    this._city = photographer.city
+    this._country = photographer.country
+    this._name = photographer.name
+    this._portrait = photographer.portrait
+    this._price = photographer.price
+    this._tagline = photographer.tagline
+    this._tags = photographer.tags
+  }
 
-class photographerCard {
-    constructor(photographer) {
-        this._photographer = photographer
-    }
-    
-    
-    createPhotographersCard() {
-        const $wrapperPhotographer = document.createElement("article")
-        $wrapperPhotographer.setAttribute("id", this._photographer.id);
-        
-       const mediaCardImg = `
-                <a href = "photographer.html?${this._photographer.id}" tabindex="10" aria-label="Aller sur la page de ${this._photographer.name} originaire de ${this._photographer.city} , ${this._photographer.country}">
+  createPhotographersCard () {
+    const $wrapperPhotographer = document.createElement('article')
+    $wrapperPhotographer.setAttribute('id', this._id)
+
+    const mediaCardImg = `
+                <a href = 'photographer.html?${this._id}' tabindex='10' aria-label='Aller sur la page de ${this._name} originaire de ${this._city} , ${this._country}'>
                     <img 
-                        src = "assets/photographers/${this._photographer.portrait}"
-                        alt="${this._photographer.name} " portrait"
-                        role="img"
-                        class="imgPortait"
+                        src = 'assets/photographers/${this._portrait}'
+                        alt='${this._name} ' portrait'
+                        role='img'
+                        class='imgPortrait'
                     />
                 
-                    <aside class="asidePhotohgrapher">
-                        <h2> ${this._photographer.name} </h2>
-                        <p> ${this._photographer.city} , ${this._photographer.country} </p>
-                        <p> ${this._photographer.tagline} </p>
-                        <p> ${this._photographer.price} "$ / jour" </p>
+                    <aside class='asidePhotographer'>
+                        <h2> ${this._name} </h2>
+                        <p> ${this._city} , ${this._country} </p>
+                        <p> ${this._tagline} </p>
+                        <p> ${this._price} '$ / jour' </p>
                     </aside> 
-                </a>
-                  
-        ` 
-        $wrapperPhotographer.innerHTML = mediaCardImg
-        return $wrapperPhotographer
-        
-    }
+                </a>    
+        `
+    $wrapperPhotographer.innerHTML = mediaCardImg
+    return $wrapperPhotographer
+  }
+
+  createCounterFooter () {
+    const footer = document.createElement('footer')
+    footer.classList.add('counterFooter')
+
+    const mediaFooter = `
+                  <section class="photographerFooter">
+                      <aside class="photographerFooter_aside">
+                          <P class="photographerFooter_aside_totalLikes" tabindex="6" aria-label="Nomre total de j'aime"></P>
+                          <i class="fas fa-heart" aria-hidden="true"></i>
+                      </aside>
+                      <p class="photographerFooter_price" tabindex="7" aria-label="Tarif du photographe ${this._price} euro par jour">${this._price} €/jour </p>
+                  </section>
+              `
+    footer.innerHTML = mediaFooter
+    return footer
+  }
 }

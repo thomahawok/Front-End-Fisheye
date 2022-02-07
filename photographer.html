@@ -1,22 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-  <head>
-    
-    <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    
-    <link rel="icon" type="image/png" href="assets/favicon.png"/>
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+    <meta charset="UTF-8">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="icon" type="image/png" href="../assets/favicon.png">
     <script src="https://kit.fontawesome.com/be6a7f0441.js" crossorigin="anonymous"></script> 
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet"/>
+		<link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Fisheye - Photographe"/>
-    <meta name="description" content="FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux."/>
-    <title>Fisheye</title>
-  </head>
+    <meta name="description" content="FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux.">
+		<title>Fisheye</title>
+	</head>
 
   <body>
     <header>
-      <img src="assets/images/logo.png" alt="logo de Fisheye - Page potographe" class="logo"/>
+      <a href="index.html" aria-label="Go to fisheye homepage" tabindex="2" title="Go to fisheye homepage">
+        <img src="assets/images/logo.png" alt="logo de Fisheye - Page potographe" class="logo"/>
+      </a>
     </header>
     
     <main id="main">
@@ -26,12 +26,11 @@
 
       <section class="classify">
           <label for="dropDownMenu" >Triez par</label>
-          <select id="dropDownMenu" class = "dropDownMenu__menu" aria-label = "" tabindex="">
-            <option Value="" class="dropDownMenu__menu__item"></option>
+          <select id="dropDownMenu" class = "dropDownMenu__menu" aria-label = "menu déroulant" tabindex="4">
+            <option Value="emty" class="dropDownMenu__menu__item"></option>
             <option Value="popularity" class="dropDownMenu__menu__item">Popularité</option>
             <option Value="title" class="dropDownMenu__menu__item">Titre</option> 
           </select>
-        </div>
       </section> 
 
       <section class="photograph_media">
@@ -42,7 +41,7 @@
       <div class="content">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" alt="croix pour fermer la fenêtre" onclick="closeModal()" />
         </header>
 
         <div class="modal-body">
@@ -56,8 +55,7 @@
             <div
               class="formData"
               id = "formFirst"
-              data-error-visible="false"
-              data-valid="false" >
+              >
               <label for="first">Prénom</label><br>
               <input
                 class="text-control"
@@ -71,8 +69,7 @@
             <div
               class = "formData"
               id = "formLast"
-              data-error-visible="false"
-              data-valid="false" >
+              >
               <label for="last">Nom</label><br>
               <input
                 class="text-control"
@@ -85,10 +82,8 @@
             </div>
             <div
             class = "formData"
-            id = "formEmail"
-            data-error-visible = "false"
-            data-valid = "false" >
-              <label for="email">E-mail</label><br>
+            >
+              <label for="emailInput">E-mail</label><br>
               <input
                 class="text-control"
                 type="email"
@@ -99,32 +94,39 @@
             </div>
             <div
             class = "formData"
-            id = "formEmail"
-            data-error-visible = "false"
-            data-valid = "false" >
+            >
               <label for="messageText">Votre messsage</label><br>
-              <input
+              <textarea
               class="text-control"
-                type="textarea"
                 id="messageText"
                 name="messageText"
                 rows="10"
                 required
-              ><br>
+              ></textarea><br>
             </div>
             <button id="btsubmit" class="contact_button" type="submit">Envoyer</button>
           </form>
         </div>
+      </div>
 		</div>
+
+    <div id="lightBoxId" class="lightbox">
+      <button class="lightbox__close" aria-label="Fermer la visualition du média">Fermer</button>
+      <button class="lightbox__next" aria-label="Image suivante">Suivant</button>
+      <button class="lightbox__prev" aria-label="Image précédente">Précédent</button>
+      <div class="lightbox__container" role="dialog" aria-label="">
+        <p class='lightbox__container__img-title'></p>
+      </div>
+    </div>
     
 		<script src="scripts/api/apiData.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/factories/photographerFactories.js"></script>
     <script src="scripts/factories/mediasFactories.js"></script>
-    <script src="scripts/factories/constFooterFactories.js"></script>
+
     <script src="/scripts/utils/contactForm.js"></script>
-    <script src="/scripts/utils/counterlikes.js"></script>
-    <script src="/scripts/utils/sortBy.js"></script>
+  
+   
     <script src="/scripts/utils/lightBox.js"></script>
   </body>
 </html>

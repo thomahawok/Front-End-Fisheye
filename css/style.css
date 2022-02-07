@@ -39,6 +39,11 @@ h1 {
     flex-direction: column;
 }
 */
+
+.photographer_section article a:focus {
+    border: 1px solid #911c1c;
+  }
+            
 .photographer_section article a {
     
     display: flex;
