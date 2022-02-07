@@ -15,7 +15,7 @@ class PhotographerCard {
     $wrapperPhotographer.setAttribute('id', this._id)
 
     const mediaCardImg = `
-                <a href = 'photographer.html?${this._id}' tabindex='10' aria-label='Aller sur la page de ${this._name} originaire de ${this._city} , ${this._country}'>
+                <a href = 'photographer.html?${this._id}' aria-label='Aller sur la page de ${this._name} originaire de ${this._city} , ${this._country}'>
                     <img 
                         src = 'assets/photographers/${this._portrait}'
                         alt='${this._name} ' portrait'
@@ -23,12 +23,12 @@ class PhotographerCard {
                         class='imgPortrait'
                     />
                 
-                    <aside class='asidePhotographer'>
+                    <div class='asidePhotographer'>
                         <h2> ${this._name} </h2>
                         <p> ${this._city} , ${this._country} </p>
                         <p> ${this._tagline} </p>
                         <p> ${this._price} '$ / jour' </p>
-                    </aside> 
+                    </div> 
                 </a>    
         `
     $wrapperPhotographer.innerHTML = mediaCardImg
@@ -41,11 +41,11 @@ class PhotographerCard {
 
     const mediaFooter = `
                   <section class="photographerFooter">
-                      <aside class="photographerFooter_aside">
-                          <P class="photographerFooter_aside_totalLikes" tabindex="6" aria-label="Nomre total de j'aime"></P>
+                      <div class="photographerFooter_aside">
+                          <P class="photographerFooter_aside_totalLikes" tabindex="0" aria-label="Nombre total de j'aime"></P>
                           <i class="fas fa-heart" aria-hidden="true"></i>
-                      </aside>
-                      <p class="photographerFooter_price" tabindex="7" aria-label="Tarif du photographe ${this._price} euro par jour">${this._price} €/jour </p>
+                      </div>
+                      <p class="photographerFooter_price" tabindex="0" aria-label="Tarif du photographe ${this._price} euro par jour">${this._price} €/jour </p>
                   </section>
               `
     footer.innerHTML = mediaFooter

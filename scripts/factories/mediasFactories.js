@@ -10,21 +10,21 @@ class MediaCard {
     if (this._media.image) {
       const mediaCardImg = `
               <figure class='Media'>
-                  <a href = '/assets/Sample Photos/${this._media.photographerId}/${this._media.image}'>
+                  
                     <img 
                         src = '/assets/thumbnails/${this._media.photographerId}/${this._media.image}'
                         alt="${this._media.description}"
                         role='img'
                         class='imgMedia'
-                        tabindex='5'
+                        tabindex='0'
                     />
-                  </a>
+                  
                 <footer class='footerMedia'>
                     <figuration class='figuration'> ${this._media.title} </figuration>
                     <div class='contenerLikes'>
                       <p class = 'numberLikes'> ${this._media.likes}</p>
-                      <button class = 'likes' tabindex='5'>
-                          <i class='fa-2x far fa-heart' class='likes' id= ${this._media.id} ></i>
+                      <button class='likes' title="j'aime" '>
+                          <i class='fa-2x far fa-heart' id= ${this._media.id} ></i>
                       </button>
                     </div>
                 </footer>
@@ -39,20 +39,20 @@ class MediaCard {
 
       const mediaCardVideo = `
           <figure class='Media'>
-            <a href = '/assets/Sample Photos/${this._media.photographerId}/${this._media.video}'>
-                <video class='imgMedia' role='video'  poster='/assets/Sample Photos/${this._media.photographerId}/${poster}' tabindex='5'>
+           
+                <video class='imgMedia'  poster='/assets/Sample Photos/${this._media.photographerId}/${poster}' tabindex='0'>
                     <source
                     src = '/assets/Sample Photos/${this._media.photographerId}/${this._media.video}'
-                    type='video/mp4'
+                    type='video/mp4'            
                     >
                </video>
-            </a>
+            
             <footer class='footerMedia'>
                 <figuration  class='figuration'> ${this._media.title} </figuration>
                 <div class='contenerLikes'>
                   <p class = 'numberLikes'> ${this._media.likes}</p>
-                  <button class = 'likes' tabindex='5'>
-                    <i class='fa-2x far fa-heart' class='likes' id= ${this._media.id} ></i>
+                  <button class = 'likes' title="j'aime">
+                    <i class='fa-2x far fa-heart' id= ${this._media.id} ></i>
                   </button>
                 </div> 
             </footer>

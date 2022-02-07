@@ -2,7 +2,7 @@
 <html lang="fr">
 	<head>
     <meta charset="UTF-8">
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/photographer.css">
 		<link rel="icon" type="image/png" href="../assets/favicon.png">
     <script src="https://kit.fontawesome.com/be6a7f0441.js" crossorigin="anonymous"></script> 
 		<link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -14,106 +14,105 @@
 
   <body>
     <header>
-      <a href="index.html" aria-label="Go to fisheye homepage" tabindex="2" title="Go to fisheye homepage">
+      <a href="index.html" aria-label="Go to fisheye homepage"  title="Go to fisheye homepage">
         <img src="assets/images/logo.png" alt="logo de Fisheye - Page potographe" class="logo"/>
       </a>
     </header>
     
     <main id="main">
       <section class="photograph_header">
-         <button class="contact_button" onclick="displayModal()" tabindex="3" aria-label="Contacter le photographe">Contactez-moi</button>
-      </section>
+         <button class="contact_button" onclick="displayModal()" aria-label="Contacter le photographe">Contactez-moi</button>
+     
 
+      <div id="contact_modal" class="modal">
+        <div class="content">
+          <header>
+            <h1>Contactez-moi</h1>
+            <img src="assets/icons/close.svg" alt="croix pour fermer la fenêtre" onclick="closeModal()" tabindex="0"/>
+          </header>
+  
+          <div class="modal-body">
+            <form
+              id="form"
+              name="reserve"
+              action= "index.html"
+              method="get"
+              novalidate
+            >
+              <div
+                class="formData"
+                id = "formFirst"
+                >
+                <label for="first">Prénom</label><br>
+                <input
+                  class="text-control"
+                  type="text"
+                  id="first"
+                  name="first"
+                  pattern="[A-Za-z]{2,12}"
+                  required
+                /><br>
+              </div>
+              <div
+                class = "formData"
+                id = "formLast"
+                >
+                <label for="last">Nom</label><br>
+                <input
+                  class="text-control"
+                  type="text"
+                  id="last"
+                  name="last"
+                  pattern="[A-Za-z]{2,8}"
+                  required
+                /><br>
+              </div>
+              <div class = "formData">
+                <label for="emailInput">E-mail</label><br>
+                <input
+                  class="text-control"
+                  type="email"
+                  id="email"
+                  name="email"
+                  
+                  required
+                /><br>
+              </div>
+              <div class = "formData">           >
+                <label for="messageText">Votre messsage</label><br>
+                <textarea
+                class="text-control"
+                  id="messageText"  
+                  name="messageText"
+                  rows="10"
+                  required
+                ></textarea><br>
+              </div>
+              <button id="btsubmit" class="contact_button" type="submit"  >Envoyer</button>
+            </form>
+          </div>
+        </div>
+      </div>
+  
+    </section>
       <section class="classify">
           <label for="dropDownMenu" >Triez par</label>
-          <select id="dropDownMenu" class = "dropDownMenu__menu" aria-label = "menu déroulant" tabindex="4">
+          <select id="dropDownMenu" class = "dropDownMenu__menu" aria-label = "menu déroulant">
             <option Value="emty" class="dropDownMenu__menu__item"></option>
             <option Value="popularity" class="dropDownMenu__menu__item">Popularité</option>
             <option Value="title" class="dropDownMenu__menu__item">Titre</option> 
           </select>
       </section> 
 
-      <section class="photograph_media">
+      <section class="photograph_media">  
       </section>
     </main>
 
-		<div id="contact_modal" class="modal">
-      <div class="content">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" alt="croix pour fermer la fenêtre" onclick="closeModal()" />
-        </header>
-
-        <div class="modal-body">
-          <form
-            id="form"
-            name="reserve"
-            action= "index.html"
-            method="get"
-            novalidate
-          >
-            <div
-              class="formData"
-              id = "formFirst"
-              >
-              <label for="first">Prénom</label><br>
-              <input
-                class="text-control"
-                type="text"
-                id="first"
-                name="first"
-                pattern="[A-Za-z]{2,12}"
-                required
-              /><br>
-            </div>
-            <div
-              class = "formData"
-              id = "formLast"
-              >
-              <label for="last">Nom</label><br>
-              <input
-                class="text-control"
-                type="text"
-                id="last"
-                name="last"
-                pattern="[A-Za-z]{2,8}"
-                required
-              /><br>
-            </div>
-            <div
-            class = "formData"
-            >
-              <label for="emailInput">E-mail</label><br>
-              <input
-                class="text-control"
-                type="email"
-                id="email"
-                name="email"
-                required
-              /><br>
-            </div>
-            <div
-            class = "formData"
-            >
-              <label for="messageText">Votre messsage</label><br>
-              <textarea
-              class="text-control"
-                id="messageText"
-                name="messageText"
-                rows="10"
-                required
-              ></textarea><br>
-            </div>
-            <button id="btsubmit" class="contact_button" type="submit">Envoyer</button>
-          </form>
-        </div>
-      </div>
-		</div>
-
+		
     <div id="lightBoxId" class="lightbox">
       <button class="lightbox__close" aria-label="Fermer la visualition du média">Fermer</button>
-      <button class="lightbox__next" aria-label="Image suivante">Suivant</button>
-      <button class="lightbox__prev" aria-label="Image précédente">Précédent</button>
+      <button class="lightbox__next" aria-label="Image suivante" >Suivant</button>
+      <button class="lightbox__prev" aria-label="Image précédente" >Précédent</button>
       <div class="lightbox__container" role="dialog" aria-label="">
         <p class='lightbox__container__img-title'></p>
       </div>

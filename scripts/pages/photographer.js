@@ -1,6 +1,5 @@
 let $mediasWrapper = document.querySelector('.photograph_media')
-let $mediasFooter = document.querySelector('body')
-
+const btnLike = document.querySelectorAll('.likes')
 class AppMedias {
   constructor () {
     this.mediasApi = new MediasApi ('./data/photographers.json')
@@ -18,7 +17,9 @@ class AppMedias {
     updateGallery(mediasId)
     displayFooterLikes(photographerId)
     likeDontLike(mediasId)
+    onFocus()
     initLightbox()
+
     /* création HTML du trie par popularité et titre */
     const dropDownMenu = document.querySelector('#dropDownMenu')
     dropDownMenu.addEventListener('change', function (event) {
@@ -26,7 +27,6 @@ class AppMedias {
       const getOption = event.target.value
       const option = sortByOption(mediasId, getOption)
       updateGallery(option)
-
       initLightbox()
     })
   }
@@ -64,7 +64,6 @@ function updateGallery (gallery) {
   gallery.forEach(media => {
     const Template = new MediaCard(media)
     $mediasWrapper.appendChild(Template.createMediaCard())
-    
   })
 }
 
@@ -73,28 +72,27 @@ function updateGallery (gallery) {
  * @param {Array} mediasId
  */
 function likeDontLike (mediasId) {
-  document.addEventListener('click', (e) => {
-    if (!isNaN(e.target.id) && (!!e.target.id)) { /* si le target contien un ID et contien quequechose */
-      const oldCount = Number(e.target.parentElement.previousElementSibling.textContent) /* récupère le nombre de likes correspodant au coeur clické */
-      const indexData = mediasId.findIndex(element => element.id == e.target.id) /* récupère le nombre de likes correspodant au coeur clické */
-      const numberLikes = e.target.parentElement.previousElementSibling
+  const elementCount = document.querySelectorAll('.likes i')
+  elementCount.forEach((like) => {
+    like.addEventListener('click', (e) => {
+      const oldCount = Number(e.path[2].innerText)
+      const indexData = mediasId.findIndex(element => element.id == e.target.id)
+      const numberLikes = e.path[2].children[0]
       if (oldCount === mediasId[indexData].likes) {
         const newCount = oldCount + 1
         numberLikes.innerHTML = newCount
         const eTarget = e.target
         eTarget.className = 'fa-2x fas fa-heart'
-        eTarget.parentElement.setAttribute('aria-label', "Ajouter un j'aime")
+        eTarget.parentElement.setAttribute('aria-label', "j'aime")
       } else {
         const newCount = oldCount - 1
         numberLikes.innerHTML = newCount
         const eTarget = e.target
         eTarget.className = 'fa-2x far fa-heart'
-        eTarget.parentElement.setAttribute('aria-label', "Retirer le j'aime")
+        eTarget.parentElement.setAttribute('aria-label', "J'iame pas")
       }
       totalCuntLikes()
-    } else {
-      return false
-    }
+    })
   })
 }
 
@@ -110,6 +108,23 @@ function totalCuntLikes () {
   }
   const totalLikesP = document.querySelector('p.photographerFooter_aside_totalLikes')
   totalLikesP.innerHTML = totalLikes
+}
+
+/**
+* Like counter function on key up- Fonction compteur de like clavier
+*/
+function onFocus () {
+  const elementa = Array.from(document.querySelectorAll('.likes'))
+  elementa.forEach((elemOne) => {
+    elemOne.addEventListener('keyup', (e) => {
+      if (e.keyCode === 13) {
+        const essai = e.target.firstElementChild
+        essai.click()
+      } else {
+        return false
+      }
+    })
+  })
 }
 
 /**
@@ -129,3 +144,4 @@ function sortByOption (mediasId, getOption) {
       })
   }
 }
+
