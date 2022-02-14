@@ -27,8 +27,9 @@ class Lightbox {
   /* modifie le chemin src /assets/thumbnails/... (vignettes) vers /assets/Sapmle Photos/...(large size media)) */
   modifySrcPath (src) {
     const arrayPath = src.split('/')
-    arrayPath.splice(2, 1, 'Sample Photos')
+    arrayPath.splice(1, 1, 'Sample Photos')
     const srcMediaPath = arrayPath.join('/')
+    console.log(srcMediaPath)
     return srcMediaPath
   }
 

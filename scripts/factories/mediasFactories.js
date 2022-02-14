@@ -11,7 +11,7 @@ class MediaCard {
       const mediaCardImg = `
               <figure class='Media'>
                     <img 
-                        src = './assets/thumbnails/${this._media.photographerId}/${this._media.image}'
+                        src = 'assets/thumbnails/${this._media.photographerId}/${this._media.image}'
                         alt="${this._media.description}"
                         role='img'
                         class='imgMedia'
@@ -38,9 +38,9 @@ class MediaCard {
 
       const mediaCardVideo = `
           <figure class='Media'>
-                <video class='imgMedia'  poster='./assets/Sample Photos/${this._media.photographerId}/${poster}' tabindex='0'>
+                <video class='imgMedia'  poster='assets/Sample Photos/${this._media.photographerId}/${poster}' tabindex='0'>
                     <source
-                    src = './assets/Sample Photos/${this._media.photographerId}/${this._media.video}'
+                    src = 'assets/Sample Photos/${this._media.photographerId}/${this._media.video}'
                     type='video/mp4'            
                     >
                </video>
