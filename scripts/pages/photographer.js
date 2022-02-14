@@ -1,3 +1,5 @@
+
+
 let $mediasWrapper = document.querySelector('.photograph_media')
 
 class AppMedias {
