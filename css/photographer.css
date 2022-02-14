@@ -172,7 +172,7 @@ body {
 .lightbox__next, 
 .lightbox__prev{
     border : none;
-    background: url(/assets/icons/arrow.svg) center center / 16px 28px no-repeat;
+    background: url(../assets/icons/arrow.svg) center center / 16px 28px no-repeat;
     width: 50px;
     height: 100%;
     position: fixed;
@@ -200,7 +200,7 @@ body {
 .lightbox__close{
     width: 30px;
     height: 30px;
-    background : url(/assets/icons/cross.svg) center center / 100% 100% no-repeat transparent;
+    background : url(../assets/icons/cross.svg) center center / 100% 100% no-repeat transparent;
     position: fixed;
     text-indent: -3000px;
     top:20px;
