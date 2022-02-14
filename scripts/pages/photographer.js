@@ -1,5 +1,5 @@
 let $mediasWrapper = document.querySelector('.photograph_media')
-const btnLike = document.querySelectorAll('.likes')
+
 class AppMedias {
   constructor () {
     this.mediasApi = new MediasApi ('./data/photographers.json')
@@ -62,8 +62,8 @@ function displayFooterLikes (photographerId) {
  */
 function updateGallery (gallery) {
   gallery.forEach(media => {
-    const Template = new MediaCard(media)
-    $mediasWrapper.appendChild(Template.createMediaCard())
+    const template = new MediaCard(media)
+    $mediasWrapper.appendChild(template.createMediaCard())
   })
 }
 
