@@ -8,7 +8,6 @@
 */
 class Lightbox {
   constructor (src, alt, arraySrc, arrayAlt) {
-    console.log(alt)
     this.arraySrc = arraySrc
     this.arrayAlt = arrayAlt
     this.closeBtn = document.querySelector('.lightbox__close')
@@ -29,7 +28,6 @@ class Lightbox {
     const arrayPath = src.split('/')
     arrayPath.splice(1, 1, 'Sample Photos')
     const srcMediaPath = arrayPath.join('/')
-    console.log(srcMediaPath)
     return srcMediaPath
   }
 
