@@ -147,3 +147,38 @@ function sortByOption (mediasId, getOption) {
   }
 }
 
+
+/**
+ * Lightbox for show photographers medias
+ * @constant {HTMLElement} galleryMedias - Get elements in medias gallery
+ * @constant {string []} arrayJpgMp4 - Get all elements who contains img and video
+ * @constant {string []} arraySrc - Get attributes src of all medias
+ */
+ function initLightbox () {
+  /** ceate array of sources medias **/
+  /** créé un tableau des sources des médais **/
+  const galleryMedias = document.querySelector('.photograph_media')
+  const arrayJpgMp4 = Array.from(galleryMedias.querySelectorAll('img[src$=".jpg"],source[src$=".mp4"]')) /* concerti array avec l'ensemble des tag médias (img et video) */
+  const arraySrc = arrayJpgMp4.map((link) => link.getAttribute('src')) /* array avec l'ensemble des chemins d'accès au médias (img et video) */
+  const arrayAlt = arrayJpgMp4.map((link) => link.getAttribute('alt')) /* array avec l'ensemble des chemins d'accès au médias (img et video) */
+
+  /** for eatch element of arrayJpgMp4 create new lightbox with src target and arraySrc arguements***/
+  /** pour chaque élément de arrayJpgMp4 créé une nouvelle lightbox avec les arguments src target et arraySrc ***/
+  arrayJpgMp4.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault()
+      // eslint-disable-next-line no-new
+      new Lightbox(e.currentTarget.getAttribute('src'), e.currentTarget.getAttribute('alt'), arraySrc, arrayAlt)
+    })
+
+    link.addEventListener('keyup', (e) => {
+      if (e.keyCode === 13) {
+        e.preventDefault()
+        // eslint-disable-next-line no-new
+        new Lightbox(e.currentTarget.getAttribute('src'), e.currentTarget.getAttribute('alt'), arraySrc, arrayAlt)
+      } else {
+        return false
+      }
+    })
+  })
+}
