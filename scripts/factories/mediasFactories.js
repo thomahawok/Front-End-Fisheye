@@ -38,10 +38,11 @@ class MediaCard {
 
       const mediaCardVideo = `
           <figure class='Media'>
-                <video class='imgMedia'  poster='assets/Sample Photos/${this._media.photographerId}/${poster}' tabindex='0'>
+                <video  class='imgMedia' poster='assets/Sample Photos/${this._media.photographerId}/${poster} ' tabindex='0'>
                     <source
                     src = 'assets/Sample Photos/${this._media.photographerId}/${this._media.video}'
-                    type='video/mp4'            
+                    type='video/mp4' 
+                    class='imgMedia'            
                     >
                </video>
             

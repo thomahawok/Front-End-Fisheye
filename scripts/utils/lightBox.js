@@ -1,11 +1,11 @@
-
-
+/* eslint-disable no-unused-vars */
 /**
 *
 * @param {string} src Media src
 * @param {string[]} arraySrc Array of medaid
 * @param {string} alt Alt media text
 */
+
 class Lightbox {
   constructor (src, alt, arraySrc, arrayAlt) {
     this.arraySrc = arraySrc
@@ -122,8 +122,8 @@ class Lightbox {
         i = this.arraySrc.length
       }
       let j = this.arrayAlt.findIndex((txtAlt) => txtAlt === this.alt)
-      if (i === 0) { /** gestion du premier média [0]/ arraySrc.length =10 donc i=10 ****/
-        i = this.arraySrc.length
+      if (j === 0) { /** gestion du premier média [0]/ arraySrc.length =10 donc i=10 ****/
+        j = this.arraySrc.length
       }
       this.loadMedia(this.arraySrc[i - 1], this.arrayAlt[j - 1]) /** au premier média i=0 donc arraySrc[9] (10-1) soit le premier média */
     })

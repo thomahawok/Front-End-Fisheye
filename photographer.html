@@ -21,78 +21,77 @@
     
     <main id="main">
       <section class="photograph_header">
-         <button class="contact_button" onclick="displayModal()" aria-label="Contacter le photographe">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()" aria-label="Contacter le photographe">Contactez-moi</button>
      
+        <div id="contact_modal" class="modal">
+          <div class="content">
+            <header>
+              <h1>Contactez-moi</h1>
+              <img src="assets/icons/close.svg" alt="croix pour fermer la fenêtre" onclick="closeModal()" tabindex="0"/>
+            </header>
+          
+            <div class="modal-body">
+              <form
+                id="form"
+                name="reserve"
+                action= "index.html"
+                method="get"
+                novalidate
+              >
+                <div
+                  class="formData"
+                  id = "formFirst"
+                  >
+                  <label for="first">Prénom</label><br>
+                  <input
+                    class="text-control"
+                    type="text"
+                    id="first"
+                    name="first"
+                    pattern="[A-Za-z]{2,12}"
+                    required
+                  /><br>
+                </div>
+                <div
+                  class = "formData"
+                  id = "formLast"
+                  >
+                  <label for="last">Nom</label><br>
+                  <input
+                    class="text-control"
+                    type="text"
+                    id="last"
+                    name="last"
+                    pattern="[A-Za-z]{2,8}"
+                    required
+                  /><br>
+                </div>
+                <div class = "formData">
+                  <label for="email">E-mail</label><br>
+                  <input
+                    class="text-control"
+                    type="email"
+                    id="email"
+                    name="email"
 
-      <div id="contact_modal" class="modal">
-        <div class="content">
-          <header>
-            <h1>Contactez-moi</h1>
-            <img src="assets/icons/close.svg" alt="croix pour fermer la fenêtre" onclick="closeModal()" tabindex="0"/>
-          </header>
-  
-          <div class="modal-body">
-            <form
-              id="form"
-              name="reserve"
-              action= "index.html"
-              method="get"
-              novalidate
-            >
-              <div
-                class="formData"
-                id = "formFirst"
-                >
-                <label for="first">Prénom</label><br>
-                <input
+                    required
+                  /><br>
+                </div>
+                <div class = "formData">    
+                  <label for="messageText">Votre messsage</label><br>
+                  <textarea
                   class="text-control"
-                  type="text"
-                  id="first"
-                  name="first"
-                  pattern="[A-Za-z]{2,12}"
-                  required
-                /><br>
-              </div>
-              <div
-                class = "formData"
-                id = "formLast"
-                >
-                <label for="last">Nom</label><br>
-                <input
-                  class="text-control"
-                  type="text"
-                  id="last"
-                  name="last"
-                  pattern="[A-Za-z]{2,8}"
-                  required
-                /><br>
-              </div>
-              <div class = "formData">
-                <label for="emailInput">E-mail</label><br>
-                <input
-                  class="text-control"
-                  type="email"
-                  id="email"
-                  name="email"
-                  
-                  required
-                /><br>
-              </div>
-              <div class = "formData">    
-                <label for="messageText">Votre messsage</label><br>
-                <textarea
-                class="text-control"
-                  id="messageText"  
-                  name="messageText"
-                  rows="10"
-                  required
-                ></textarea><br>
-              </div>
-              <button id="btsubmit" class="contact_button" type="submit"  >Envoyer</button>
-            </form>
+                    id="messageText"  
+                    name="messageText"
+                    rows="10"
+                    required
+                  ></textarea><br>
+                </div>
+                <button id="btsubmit" class="contact_button" type="submit"  >Envoyer</button>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
     </section>
 
       <section class="classify">

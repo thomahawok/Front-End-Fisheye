@@ -42,10 +42,10 @@ class PhotographerCard {
     const mediaFooter = `
                   <section class="photographerFooter">
                       <div class="photographerFooter_aside">
-                          <P class="photographerFooter_aside_totalLikes" tabindex="0" aria-label="Nombre total de j'aime"></P>
+                          <P class="photographerFooter_aside_totalLikes" tabindex="0" role="note" aria-label="Nombre total de j'aime"></P>
                           <i class="fas fa-heart" aria-hidden="true"></i>
                       </div>
-                      <p class="photographerFooter_price" tabindex="0" aria-label="Tarif du photographe ${this._price} euro par jour">${this._price} €/jour </p>
+                      <p class="photographerFooter_price" tabindex="0" role="note" aria-label="Tarif du photographe ${this._price} euro par jour">${this._price} €/jour </p>
                   </section>
               `
     footer.innerHTML = mediaFooter
