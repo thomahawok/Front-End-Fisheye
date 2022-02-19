@@ -1,9 +1,11 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable prefer-const */
 /* eslint-disable no-undef */
 let $mediasWrapper = document.querySelector('.photograph_media')
 
 class AppMedias {
   constructor () {
-    this.mediasApi = new MediasApi ('./data/photographers.json')
+    this.mediasApi = new MediasApi('./data/photographers.json')
   }
 
   async main () {
@@ -144,6 +146,7 @@ function onFocus () {
 * Function pulls media - Fonction tire des médias
 */
 function sortByOption (mediasId, getOption) {
+  console.log(mediasId)
   switch (getOption) {
     case 'popularity':
       return mediasId.sort((a, b) => {
@@ -151,6 +154,8 @@ function sortByOption (mediasId, getOption) {
       })
     case 'title':
       return mediasId.sort((a, b) => a.title.localeCompare(b.title))
+    case 'date':
+      return mediasId.sort((a, b) => { return new Date(b.date) - new Date(a.date) })
     default:
       return mediasId.sort((a, b) => {
         return b.likes - a.likes
@@ -164,7 +169,7 @@ function sortByOption (mediasId, getOption) {
  * @constant {string []} arrayJpgMp4 - Get all elements who contains img and video
  * @constant {string []} arraySrc - Get attributes src of all medias
  */
- function initLightbox () {
+function initLightbox () {
   /** ceate array of sources medias **/
   /** créé un tableau des sources des médais **/
   const galleryMedias = document.querySelector('.photograph_media')
